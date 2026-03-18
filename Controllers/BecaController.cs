@@ -1,4 +1,5 @@
 ﻿using Api_Becas.Models;
+using Api_Becas.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api_Becas.Controllers
@@ -7,9 +8,9 @@ namespace Api_Becas.Controllers
     [ApiController]
     public class BecaController : Controller
     {
-        private readonly IBecaService _service;
+        private readonly BecaService _service;
 
-        public BecaController(IBecaService service)
+        public BecaController(BecaService service)
         {
             _service = service;
         }
