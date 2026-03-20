@@ -28,9 +28,9 @@ namespace Api_Becas.Services
             {
                 list.Add(new ConvocatoriaModel
                 {
-                    Con_Id = Convert.ToInt32(reader["Id"]),
-                    Con_Tipo = reader["Tipo"].ToString(),
-                    Con_Fecha = Convert.ToDateTime(reader["Fecha"])
+                    Con_Id = Convert.ToInt32(reader["Con_Id"]),
+                    Con_Tipo = reader["Con_Tipo"].ToString(),
+                    Con_Fecha = Convert.ToDateTime(reader["Con_Fecha"])
                 });
             }
             return list;
@@ -50,9 +50,9 @@ namespace Api_Becas.Services
             {
                 return new ConvocatoriaModel
                 {
-                    Con_Id = Convert.ToInt32(reader["Id"]),
-                    Con_Tipo = reader["Tipo"].ToString(),
-                    Con_Fecha = Convert.ToDateTime(reader["Fecha"])
+                    Con_Id = Convert.ToInt32(reader["Con_Id"]),
+                    Con_Tipo = reader["Con_Tipo"].ToString(),
+                    Con_Fecha = Convert.ToDateTime(reader["Con_Fecha"])
                 };
             }
             return null;

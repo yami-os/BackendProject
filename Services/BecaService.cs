@@ -28,14 +28,14 @@ namespace Api_Becas.Services
             {
                 list.Add(new BecaModel
                 {
-                    Bec_Id = Convert.ToInt32(reader["Id"]),
-                    Bec_NombreConvocatoria = reader["NombreConvocatoria"].ToString(),
-                    Bec_NombreEstudiante = reader["NombreEstudiante"].ToString(),
-                    Bec_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
-                    Bec_ContraEstudiante = reader["ContraEstudiante"].ToString(),
-                    Bec_CarreraEstudiante = reader["CarreraEstudiante"].ToString(),
-                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
-                    Bec_DirreccionEstudiante = reader["DirreccionEstudiante"].ToString()
+                    Bec_Id = Convert.ToInt32(reader["Bec_Id"]),
+                    Bec_NombreConvocatoria = reader["Bec_NombreConvocatoria"].ToString(),
+                    Bec_NombreEstudiante = reader["Bec_NombreEstudiante"].ToString(),
+                    Bec_CorreoEstudiante = reader["Bec_CorreoEstudiante"].ToString(),
+                    Bec_ContraEstudiante = reader["Bec_ContraEstudiante"].ToString(),
+                    Bec_CarreraEstudiante = reader["Bec_CarreraEstudiante"].ToString(),
+                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["Bec_TelefonoEstudiante"]),
+                    Bec_DirreccionEstudiante = reader["Bec_DirreccionEstudiante"].ToString()
                 });
             }
             return list;
@@ -55,14 +55,14 @@ namespace Api_Becas.Services
             {
                 return new BecaModel
                 {
-                    Bec_Id = Convert.ToInt32(reader["Id"]),
-                    Bec_NombreConvocatoria = reader["NombreConvocatoria"].ToString(),
-                    Bec_NombreEstudiante = reader["NombreEstudiante"].ToString(),
-                    Bec_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
-                    Bec_ContraEstudiante = reader["ContraEstudiante"].ToString(),
-                    Bec_CarreraEstudiante = reader["CarreraEstudiante"].ToString(),
-                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
-                    Bec_DirreccionEstudiante = reader["DirreccionEstudiante"].ToString()
+                    Bec_Id = Convert.ToInt32(reader["Bec_Id"]),
+                    Bec_NombreConvocatoria = reader["Bec_NombreConvocatoria"].ToString(),
+                    Bec_NombreEstudiante = reader["Bec_NombreEstudiante"].ToString(),
+                    Bec_CorreoEstudiante = reader["Bec_CorreoEstudiante"].ToString(),
+                    Bec_ContraEstudiante = reader["Bec_ContraEstudiante"].ToString(),
+                    Bec_CarreraEstudiante = reader["Bec_CarreraEstudiante"].ToString(),
+                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["Bec_TelefonoEstudiante"]),
+                    Bec_DirreccionEstudiante = reader["Bec_DirreccionEstudiante"].ToString()
                 };
             }
             return null;

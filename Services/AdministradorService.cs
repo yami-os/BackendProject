@@ -29,10 +29,10 @@ namespace Api_Becas.Services
             {
                 list.Add(new AdministradorModel
                 {
-                    Adm_Id = Convert.ToInt32(reader["Id"]),
-                    Adm_Nombre = reader["Nombre"].ToString(),
-                    Adm_Correo = reader["Correo"].ToString(),
-                    Adm_Contra = reader["Contra"].ToString()
+                    Adm_Id = Convert.ToInt32(reader["Adm_Id"]),
+                    Adm_Nombre = reader["Adm_Nombre"].ToString(),
+                    Adm_Correo = reader["Adm_Correo"].ToString(),
+                    Adm_Contra = reader["Adm_Contra"].ToString()
                 });
             }
             return list;
@@ -52,10 +52,10 @@ namespace Api_Becas.Services
             {
                 return new AdministradorModel
                 {
-                    Adm_Id = Convert.ToInt32(reader["Id"]),
-                    Adm_Nombre = reader["Nombre"].ToString(),
-                    Adm_Correo = reader["Correo"].ToString(),
-                    Adm_Contra = reader["Contra"].ToString()
+                    Adm_Id = Convert.ToInt32(reader["Adm_Id"]),
+                    Adm_Nombre = reader["Adm_Nombre"].ToString(),
+                    Adm_Correo = reader["Adm_Correo"].ToString(),
+                    Adm_Contra = reader["Adm_Contra"].ToString()
                 };
             }
             return null;

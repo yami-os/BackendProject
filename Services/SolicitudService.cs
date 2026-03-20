@@ -28,14 +28,14 @@ namespace Api_Becas.Services
             {
                 list.Add(new SolicitudModel
                 {
-                    Sol_Id = Convert.ToInt32(reader["Id"]),
-                    Sol_Fecha = Convert.ToDateTime(reader["Fecha"]),
-                    Sol_Estado = reader["Estado"].ToString(),
-                    Sol_Comentarios = reader["Comentarios"].ToString(),
-                    Sol_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
-                    Sol_CrearContra = reader["CrearContra"].ToString(),
-                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
-                    Sol_DireccionEstudiante = reader["DireccionEstudiante"].ToString()
+                    Sol_Id = Convert.ToInt32(reader["Sol_Id"]),
+                    Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
+                    Sol_Estado = reader["Sol_Estado"].ToString(),
+                    Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
+                    Sol_CorreoEstudiante = reader["Sol_CorreoEstudiante"].ToString(),
+                    Sol_CrearContra = reader["Sol_CrearContra"].ToString(),
+                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["Sol_TelefonoEstudiante"]),
+                    Sol_DireccionEstudiante = reader["Sol_DireccionEstudiante"].ToString()
                 });
             }
             return list;
@@ -55,14 +55,14 @@ namespace Api_Becas.Services
             {
                 return new SolicitudModel
                 {
-                    Sol_Id = Convert.ToInt32(reader["Id"]),
-                    Sol_Fecha = Convert.ToDateTime(reader["Fecha"]),
-                    Sol_Estado = reader["Estado"].ToString(),
-                    Sol_Comentarios = reader["Comentarios"].ToString(),
-                    Sol_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
-                    Sol_CrearContra = reader["CrearContra"].ToString(),
-                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
-                    Sol_DireccionEstudiante = reader["DireccionEstudiante"].ToString()
+                    Sol_Id = Convert.ToInt32(reader["Sol_Id"]),
+                    Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
+                    Sol_Estado = reader["Sol_Estado"].ToString(),
+                    Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
+                    Sol_CorreoEstudiante = reader["Sol_CorreoEstudiante"].ToString(),
+                    Sol_CrearContra = reader["Sol_CrearContra"].ToString(),
+                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["Sol_TelefonoEstudiante"]),
+                    Sol_DireccionEstudiante = reader["Sol_DireccionEstudiante"].ToString()
                 };
             }
             return null;

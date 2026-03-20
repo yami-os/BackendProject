@@ -2,8 +2,8 @@ using Api_Becas.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
+// Add services to the container. //SE AGREGÓ
+builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBecaService, BecaService>();
 builder.Services.AddScoped<IEstudianteService, EstudianteService>();
 builder.Services.AddScoped<ISolicitudService, SolicitudService>();
@@ -20,9 +20,10 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+// 
 var app = builder.Build();
 
+// TAMBIEN SE AGREGAN
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseCors("AllowAll");

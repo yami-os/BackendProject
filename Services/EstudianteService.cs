@@ -29,13 +29,13 @@ namespace Api_Becas.Services
             {
                 list.Add(new EstudianteModel
                 {
-                    Est_Id = Convert.ToInt32(reader["Id"]),
-                    Est_Nombre = reader["Nombre"].ToString(),
-                    Est_Correo = reader["Correo"].ToString(),
-                    Est_Contra = reader["Contra"].ToString(),
-                    Est_Carrera = reader["Carrera"].ToString(),
-                    Est_Telefono = Convert.ToInt32(reader["Telefono"]),
-                    Est_Direccion = reader["Direccion"].ToString()
+                    Est_Id = Convert.ToInt32(reader["Est_Id"]),
+                    Est_Nombre = reader["Est_Nombre"].ToString(),
+                    Est_Correo = reader["Est_Correo"].ToString(),
+                    Est_Contra = reader["Est_Contra"].ToString(),
+                    Est_Carrera = reader["Est_Carrera"].ToString(),
+                    Est_Telefono = Convert.ToInt32(reader["Est_Telefono"]),
+                    Est_Direccion = reader["Est_Direccion"].ToString()
                 });
             }
             return list;
@@ -55,13 +55,13 @@ namespace Api_Becas.Services
             {
                 return new EstudianteModel
                 {
-                    Est_Id = Convert.ToInt32(reader["Id"]),
-                    Est_Nombre = reader["Nombre"].ToString(),
-                    Est_Correo = reader["Correo"].ToString(),
-                    Est_Contra = reader["Contra"].ToString(),
-                    Est_Carrera = reader["Carrera"].ToString(),
-                    Est_Telefono = Convert.ToInt32(reader["Telefono"]),
-                    Est_Direccion = reader["Direccion"].ToString()
+                    Est_Id = Convert.ToInt32(reader["Est_Id"]),
+                    Est_Nombre = reader["Est_Nombre"].ToString(),
+                    Est_Correo = reader["Est_Correo"].ToString(),
+                    Est_Contra = reader["Est_Contra"].ToString(),
+                    Est_Carrera = reader["Est_Carrera"].ToString(),
+                    Est_Telefono = Convert.ToInt32(reader["Est_Telefono"]),
+                    Est_Direccion = reader["Est_Direccion"].ToString()
                 };
             }
             return null;
