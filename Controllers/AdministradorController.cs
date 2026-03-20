@@ -17,13 +17,13 @@ namespace Api_Becas.Controllers
 
         // LISTAR TODOS
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll_Administrador()
         {
             return Ok(_administradorService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult Get_By_Id_Administrador(int id)
         {
             var administrador = _administradorService.GetById(id);
 
@@ -35,25 +35,25 @@ namespace Api_Becas.Controllers
 
         
         [HttpPost]
-        public IActionResult InsertAdministrador([FromBody] AdministradorModel administrador)
+        public IActionResult Insert_Administrador([FromBody] AdministradorModel administrador)
         {
-            var id = _administradorService.InsertAdministrador(administrador);
+            var id = _administradorService.Insert(administrador);
             return Ok(new { id });
         }
 
         
         [HttpPut]
-        public IActionResult UpdateAdministrador([FromBody] AdministradorModel administrador)
+        public IActionResult Update_Administrador([FromBody] AdministradorModel administrador)
         {
-            _administradorService.UpdateAdministrador(administrador);
+            _administradorService.Update(administrador);
             return Ok();
         }
 
         
         [HttpDelete("{id}")]
-        public IActionResult DeleteAdministrador(int id)
+        public IActionResult Delete_Administrador(int id)
         {
-            _administradorService.DeleteAdministrador(id);
+            _administradorService.Delete(id);
             return Ok();
         }
     }

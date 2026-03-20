@@ -16,13 +16,13 @@ namespace Api_Becas.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll_Estudiante()
         {
             return Ok(_estudianteService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult Get_By_Id_Estudiante(int id)
         {
             var estudiante = _estudianteService.GetById(id);
 
@@ -33,23 +33,23 @@ namespace Api_Becas.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertEstudiante([FromBody] EstudianteModel estudiante)
+        public IActionResult Insert_Estudiante([FromBody] EstudianteModel estudiante)
         {
-            var id = _estudianteService.InsertEstudiante(estudiante);
+            var id = _estudianteService.Insert(estudiante);
             return Ok(new { id });
         }
 
         [HttpPut]
-        public IActionResult UpdateEstudiante([FromBody] EstudianteModel estudiante)
+        public IActionResult Update_Estudiante([FromBody] EstudianteModel estudiante)
         {
-            _estudianteService.UpdateEstudiante(estudiante);
+            _estudianteService.Update(estudiante);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteEstudiante(int id)
+        public IActionResult Delete_Estudiante(int id)
         {
-            _estudianteService.DeleteEstudiante(id);
+            _estudianteService.Delete(id);
             return Ok();
         }
     }

@@ -6,8 +6,8 @@ namespace Api_Becas.Services
     {
         List<ConvocatoriaModel> GetAll();
         ConvocatoriaModel GetById(int id);
-        int InsertProducts(ConvocatoriaModel convocatoriamodel);
-        void UpdateProducts(ConvocatoriaModel convocatoriamodel);
-        void DeleteProducts(int id);
+        int Insert(ConvocatoriaModel convocatoriamodel);
+        void Update(ConvocatoriaModel convocatoriamodel);
+        void Delete(int id);
     }
 }

@@ -6,8 +6,8 @@ namespace Api_Becas.Services
     {
         List<EstudianteModel> GetAll();
         EstudianteModel GetById(int id);
-        int InsertProducts(EstudianteModel estudiantemodel);
-        void UpdateProducts(EstudianteModel estudiantemodel);
-        void DeleteProducts(int id);
+        int Insert(EstudianteModel estudiantemodel);
+        void Update(EstudianteModel estudiantemodel);
+        void Delete(int id);
     }
 }

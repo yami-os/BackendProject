@@ -6,8 +6,8 @@ namespace Api_Becas.Services
     {
         List<BecaModel> GetAll();
         BecaModel GetById(int id);
-        int InsertProducts(BecaModel becamodel);
-        void UpdateProducts(BecaModel becamodel);
-        void DeleteProducts(int id);
+        int Insert(BecaModel becaModel);
+        void Update(BecaModel becaModel);
+        void Delete(int id);
     }
 }

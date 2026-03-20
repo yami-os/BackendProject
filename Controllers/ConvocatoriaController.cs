@@ -16,13 +16,13 @@ namespace Api_Becas.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll_Convocatoria()
         {
             return Ok(_service.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult Get_By_Id_Convocatoria(int id)
         {
             var data = _service.GetById(id);
             if (data == null) return NotFound();
@@ -30,23 +30,23 @@ namespace Api_Becas.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert([FromBody] ConvocatoriaModel convocatoria)
+        public IActionResult Insert_Convocatoria([FromBody] ConvocatoriaModel convocatoria)
         {
-            var id = _service.InsertConvocatoria(convocatoria);
+            var id = _service.Insert(convocatoria);
             return Ok(new { id });
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] ConvocatoriaModel convocatoria)
+        public IActionResult Update_Convocatoria([FromBody] ConvocatoriaModel convocatoria)
         {
-            _service.UpdateConvocatoria(convocatoria);
+            _service.Update(convocatoria);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete_Convocatoria(int id)
         {
-            _service.DeleteConvocatoria(id);
+            _service.Delete(id);
             return Ok();
         }
     }

@@ -16,13 +16,13 @@ namespace Api_Becas.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll_Solicitud()
         {
             return Ok(_service.GetAll());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public IActionResult Get_By_Id_Solicitud(int id)
         {
             var data = _service.GetById(id);
             if (data == null) return NotFound();
@@ -30,23 +30,23 @@ namespace Api_Becas.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert([FromBody] SolicitudModel solicitud)
+        public IActionResult Insert_Solicitud([FromBody] SolicitudModel solicitud)
         {
-            var id = _service.InsertSolicitud(solicitud);
+            var id = _service.Insert(solicitud);
             return Ok(new { id });
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] SolicitudModel solicitud)
+        public IActionResult Update_Solicitud([FromBody] SolicitudModel solicitud)
         {
-            _service.UpdateSolicitud(solicitud);
+            _service.Update(solicitud);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete_Solicitud(int id)
         {
-            _service.DeleteSolicitud(id);
+            _service.Delete(id);
             return Ok();
         }
     }

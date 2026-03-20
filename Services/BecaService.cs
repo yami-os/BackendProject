@@ -17,7 +17,7 @@ namespace Api_Becas.Services
             var list = new List<BecaModel>();
 
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("sp_ListarBeca", conn);
+            using SqlCommand cmd = new SqlCommand("GetAll_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
             conn.Open();
@@ -29,24 +29,24 @@ namespace Api_Becas.Services
                 list.Add(new BecaModel
                 {
                     Bec_Id = Convert.ToInt32(reader["Id"]),
-                    Bec_NombreConv = reader["NombreConv"].ToString(),
-                    Bec_NombreEst = reader["NombreEst"].ToString(),
-                    Bec_CorreoEst = reader["CorreoEst"].ToString(),
-                    Bec_ContraseñaEst = reader["ContraseñaEst"].ToString(),
-                    Bec_CarreraEst = reader["CarreraEst"].ToString(),
-                    Bec_TelefonoEst = reader["TelefonoEst"].ToString(),
-                    Bec_DirreccionEst = reader["DirreccionEst"].ToString()
+                    Bec_NombreConvocatoria = reader["NombreConvocatoria"].ToString(),
+                    Bec_NombreEstudiante = reader["NombreEstudiante"].ToString(),
+                    Bec_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
+                    Bec_ContraEstudiante = reader["ContraEstudiante"].ToString(),
+                    Bec_CarreraEstudiante = reader["CarreraEstudiante"].ToString(),
+                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
+                    Bec_DirreccionEstudiante = reader["DirreccionEstudiante"].ToString()
                 });
             }
             return list;
         }
-        public BecaModel GetById(int id)
+        public BecaModel GetById(int Bec_Id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("sp_BuscarBeca", conn);
+            using SqlCommand cmd = new SqlCommand("Get_By_Id_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Bec_Id", Bec_Id);
             conn.Open();
 
             using var reader = cmd.ExecuteReader();
@@ -56,63 +56,64 @@ namespace Api_Becas.Services
                 return new BecaModel
                 {
                     Bec_Id = Convert.ToInt32(reader["Id"]),
-                    Bec_NombreConv = reader["NombreConv"].ToString(),
-                    Bec_NombreEst = reader["NombreEst"].ToString(),
-                    Bec_CorreoEst = reader["CorreoEst"].ToString(),
-                    Bec_ContraseñaEst = reader["ContraseñaEst"].ToString(),
-                    Bec_CarreraEst = reader["CarreraEst"].ToString(),
-                    Bec_TelefonoEst = reader["TelefonoEst"].ToString(),
-                    Bec_DirreccionEst = reader["DirreccionEst"].ToString()
+                    Bec_NombreConvocatoria = reader["NombreConvocatoria"].ToString(),
+                    Bec_NombreEstudiante = reader["NombreEstudiante"].ToString(),
+                    Bec_CorreoEstudiante = reader["CorreoEstudiante"].ToString(),
+                    Bec_ContraEstudiante = reader["ContraEstudiante"].ToString(),
+                    Bec_CarreraEstudiante = reader["CarreraEstudiante"].ToString(),
+                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["TelefonoEstudiante"]),
+                    Bec_DirreccionEstudiante = reader["DirreccionEstudiante"].ToString()
                 };
             }
             return null;
         }
 
-        public int InsertProducts(BecaModel becamodel)
+        public int Insert(BecaModel becaModel)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Ins_Beca", conn);
+            using SqlCommand cmd = new SqlCommand("Insert_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Bec_NombreConv", becamodel.Bec_NombreConv);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_Id", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-            cmd.Parameters.AddWithValue("@Bec_NombreEst", becamodel.Bec_NombreEst);
-
+            cmd.Parameters.AddWithValue("@Bec_Id", becaModel.Bec_Id);
+            cmd.Parameters.AddWithValue("@Bec_NombreConvocatoria", becaModel.Bec_NombreConvocatoria);
+            cmd.Parameters.AddWithValue("@Bec_NombreEstudiante", becaModel.Bec_NombreEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_CorreoEstudiante", becaModel.Bec_CorreoEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_ContraEstudiante", becaModel.Bec_ContraEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_CarreraEstudiante", becaModel.Bec_CarreraEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_TelefonoEstudiante", becaModel.Bec_TelefonoEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_DirreccionEstudiante", becaModel.Bec_DirreccionEstudiante);
 
             conn.Open();
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
-        public void UpdateProducts(BecaModel becamodel)
+        public void Update(BecaModel becaModel)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Act_Beca", conn);
+            using SqlCommand cmd = new SqlCommand("Update_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Id", becamodel.Id);
-            cmd.Parameters.AddWithValue("@Name", becamodel.Name);
-            cmd.Parameters.AddWithValue("@Price", becamodel.Price);
-            cmd.Parameters.AddWithValue("@Stock", becamodel.Stock);
+            cmd.Parameters.AddWithValue("@Bec_Id", becaModel.Bec_Id);
+            cmd.Parameters.AddWithValue("@Bec_NombreConvocatoria", becaModel.Bec_NombreConvocatoria);
+            cmd.Parameters.AddWithValue("@Bec_NombreEstudiante", becaModel.Bec_NombreEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_CorreoEstudiante", becaModel.Bec_CorreoEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_ContraEstudiante", becaModel.Bec_ContraEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_CarreraEstudiante", becaModel.Bec_CarreraEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_TelefonoEstudiante", becaModel.Bec_TelefonoEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_DirreccionEstudiante", becaModel.Bec_DirreccionEstudiante);
 
             conn.Open();
             cmd.ExecuteNonQuery();
         }
-        public void DeleteProducts(int id)
+        public void Delete(int Bec_Id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Del_Beca", conn);
+            using SqlCommand cmd = new SqlCommand("Delete_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Bec_Id", Bec_Id);
 
             conn.Open();
             cmd.ExecuteNonQuery();

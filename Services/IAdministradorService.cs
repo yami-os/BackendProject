@@ -6,8 +6,8 @@ namespace Api_Becas.Services
     {
         List<AdministradorModel> GetAll();
         AdministradorModel GetById(int id);
-        int InsertProducts(AdministradorModel administradormodel);
-        void UpdateProducts(AdministradorModel administradormodel);
-        void DeleteProducts(int id);
+        int Insert(AdministradorModel administradormodel);
+        void Update(AdministradorModel administradormodel);
+        void Delete(int id);
     }
 }
