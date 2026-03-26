@@ -32,10 +32,10 @@ namespace Api_Becas.Services
                     Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
                     Sol_Estado = reader["Sol_Estado"].ToString(),
                     Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
-                    Sol_CorreoEstudiante = reader["Sol_CorreoEstudiante"].ToString(),
+                    Sol_CorreoEst = reader["Sol_CorreoEst"].ToString(),
                     Sol_CrearContra = reader["Sol_CrearContra"].ToString(),
-                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["Sol_TelefonoEstudiante"]),
-                    Sol_DireccionEstudiante = reader["Sol_DireccionEstudiante"].ToString()
+                    Sol_Telefono = reader["Sol_Telefono"].ToString(),
+                    Sol_Direccion = reader["Sol_Direccion"].ToString()
                 });
             }
             return list;
@@ -43,7 +43,7 @@ namespace Api_Becas.Services
         public SolicitudModel GetById(int Sol_Id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Get_By_Id_Solicitud", conn);
+            using SqlCommand cmd = new SqlCommand("Get_By_ID_Solicitud", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Sol_Id", Sol_Id);
@@ -59,10 +59,10 @@ namespace Api_Becas.Services
                     Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
                     Sol_Estado = reader["Sol_Estado"].ToString(),
                     Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
-                    Sol_CorreoEstudiante = reader["Sol_CorreoEstudiante"].ToString(),
+                    Sol_CorreoEst = reader["Sol_CorreoEst"].ToString(),
                     Sol_CrearContra = reader["Sol_CrearContra"].ToString(),
-                    Sol_TelefonoEstudiante = Convert.ToInt32(reader["Sol_TelefonoEstudiante"]),
-                    Sol_DireccionEstudiante = reader["Sol_DireccionEstudiante"].ToString()
+                    Sol_Telefono = reader["Sol_Telefono"].ToString(),
+                    Sol_Direccion = reader["Sol_Direccion"].ToString()
                 };
             }
             return null;
@@ -75,14 +75,14 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Sol_Id", solicitudModel.Sol_Id);
-            cmd.Parameters.AddWithValue("@Sol_Fecha", solicitudModel.Sol_Fecha);
-            cmd.Parameters.AddWithValue("@Sol_Estado", solicitudModel.Sol_Estado);
-            cmd.Parameters.AddWithValue("@Sol_Comentarios", solicitudModel.Sol_Comentarios);
-            cmd.Parameters.AddWithValue("@Sol_CorreoEtudiante", solicitudModel.Sol_CorreoEstudiante);
-            cmd.Parameters.AddWithValue("@Sol_CrearContra", solicitudModel.Sol_CrearContra);
-            cmd.Parameters.AddWithValue("@Sol_TelefonoEstudiante", solicitudModel.Sol_TelefonoEstudiante);
-            cmd.Parameters.AddWithValue("@Sol_DireccionEstudiante", solicitudModel.Sol_DireccionEstudiante);
+            cmd.Parameters.AddWithValue("Sol_Id", solicitudModel.Sol_Id);
+            cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
+            cmd.Parameters.AddWithValue("Sol_Estado", solicitudModel.Sol_Estado);
+            cmd.Parameters.AddWithValue("Sol_Comentarios", solicitudModel.Sol_Comentarios);
+            cmd.Parameters.AddWithValue("Sol_CorreoEst", solicitudModel.Sol_CorreoEst);
+            cmd.Parameters.AddWithValue("Sol_CrearContra", solicitudModel.Sol_CrearContra);
+            cmd.Parameters.AddWithValue("Sol_Telefono", solicitudModel.Sol_Telefono);
+            cmd.Parameters.AddWithValue("Sol_Direccion", solicitudModel.Sol_Direccion);
 
             conn.Open();
             return Convert.ToInt32(cmd.ExecuteScalar());
@@ -95,14 +95,14 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Sol_Id", solicitudModel.Sol_Id);
-            cmd.Parameters.AddWithValue("@Sol_Fecha", solicitudModel.Sol_Fecha);
-            cmd.Parameters.AddWithValue("@Sol_Estado", solicitudModel.Sol_Estado);
-            cmd.Parameters.AddWithValue("@Sol_Comentarios", solicitudModel.Sol_Comentarios);
-            cmd.Parameters.AddWithValue("@Sol_CorreoEtudiante", solicitudModel.Sol_CorreoEstudiante);
-            cmd.Parameters.AddWithValue("@Sol_CrearContra", solicitudModel.Sol_CrearContra);
-            cmd.Parameters.AddWithValue("@Sol_TelefonoEstudiante", solicitudModel.Sol_TelefonoEstudiante);
-            cmd.Parameters.AddWithValue("@Sol_DireccionEstudiante", solicitudModel.Sol_DireccionEstudiante);
+            cmd.Parameters.AddWithValue("Sol_Id", solicitudModel.Sol_Id);
+            cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
+            cmd.Parameters.AddWithValue("Sol_Estado", solicitudModel.Sol_Estado);
+            cmd.Parameters.AddWithValue("Sol_Comentarios", solicitudModel.Sol_Comentarios);
+            cmd.Parameters.AddWithValue("Sol_CorreoEst", solicitudModel.Sol_CorreoEst);
+            cmd.Parameters.AddWithValue("Sol_CrearContra", solicitudModel.Sol_CrearContra);
+            cmd.Parameters.AddWithValue("Sol_Telefono", solicitudModel.Sol_Telefono);
+            cmd.Parameters.AddWithValue("Sol_Direccion", solicitudModel.Sol_Direccion);
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -113,15 +113,11 @@ namespace Api_Becas.Services
             using SqlCommand cmd = new SqlCommand("Delete_Solicitud", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@Sol_Id",Sol_Id);
+            cmd.Parameters.AddWithValue("Sol_Id", Sol_Id);
 
             conn.Open();
             cmd.ExecuteNonQuery();
         }
 
-        SolicitudModel ISolicitudService.GetById(int Sol_Id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

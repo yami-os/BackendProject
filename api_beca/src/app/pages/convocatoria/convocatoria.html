@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h2 class="text-primary border-bottom pb-2">Gestión de Convocatorias</h2>
+
+  <div class="card shadow-sm p-4 mb-4 border-0 bg-light">
+    <div class="row g-3">
+      <div class="col-md-2">
+        <label class="form-label">Folio</label>
+        <input type="number" class="form-control" [(ngModel)]="conv.con_Id" [disabled]="editando">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Tipo de Beca / Convocatoria</label>
+        <input type="text" class="form-control" [(ngModel)]="conv.con_Tipo">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Fecha de Publicación</label>
+        <input type="date" class="form-control" [(ngModel)]="conv.con_Fecha">
+      </div>
+      <div class="col-12 text-end">
+        <button class="btn btn-outline-secondary me-2" (click)="limpiar()">Cancelar</button>
+        <button class="btn btn-primary" (click)="guardar()">
+          {{ editando ? 'Actualizar' : 'Crear Nueva' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table table-hover shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Tipo de Convocatoria</th>
+        <th>Fecha Publicada</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of convocatorias">
+        <td>{{ c.con_Id }}</td>
+        <td>{{ c.con_Tipo }}</td>
+        <td>{{ c.con_Fecha | date:'dd/MM/yyyy' }}</td>
+        <td class="text-center">
+          <button class="btn btn-warning btn-sm me-2" (click)="editar(c)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(c.con_Id)">X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

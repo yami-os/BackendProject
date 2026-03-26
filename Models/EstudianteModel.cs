@@ -7,7 +7,7 @@
         public string? Est_Correo {  get; set; }
         public string? Est_Contra { get; set; }
         public string? Est_Carrera {  get; set; }
-        public int Est_Telefono {  get; set; }
+        public string? Est_Telefono {  get; set; }
         public string? Est_Direccion {  get; set; }
     }
 }

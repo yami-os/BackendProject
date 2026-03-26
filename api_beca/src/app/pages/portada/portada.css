@@ -1,0 +1,60 @@
+
+.lista-convocatorias {
+  display: flex;
+  flex-direction: column; 
+  gap: 25px;        
+  max-width: 800px;       
+  margin: 0 auto;      
+}
+
+/* Estilo de las tarjetas (basado en tu imagen) */
+.tarjeta-beca {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+}
+
+.encabezado-beca {
+  background-color: #721c24; /* El color vino de UTS */
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.cuerpo-beca {
+  padding: 20px;
+}
+
+.fecha-cierre {
+  background-color: #fff3cd;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin: 15px 0;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #721c24;
+}
+
+.btn-detalles {
+  background: white;
+  color: #721c24;
+}
+
+.btn-aplicar {
+  background: #721c24;
+  color: white;
+}

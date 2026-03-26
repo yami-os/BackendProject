@@ -29,13 +29,13 @@ namespace Api_Becas.Services
                 list.Add(new BecaModel
                 {
                     Bec_Id = Convert.ToInt32(reader["Bec_Id"]),
-                    Bec_NombreConvocatoria = reader["Bec_NombreConvocatoria"].ToString(),
-                    Bec_NombreEstudiante = reader["Bec_NombreEstudiante"].ToString(),
-                    Bec_CorreoEstudiante = reader["Bec_CorreoEstudiante"].ToString(),
-                    Bec_ContraEstudiante = reader["Bec_ContraEstudiante"].ToString(),
-                    Bec_CarreraEstudiante = reader["Bec_CarreraEstudiante"].ToString(),
-                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["Bec_TelefonoEstudiante"]),
-                    Bec_DirreccionEstudiante = reader["Bec_DirreccionEstudiante"].ToString()
+                    Bec_Nombreconv = reader["Bec_Nombreconv"].ToString(),
+                    Bec_NombreEst = reader["Bec_NombreEst"].ToString(),
+                    Bec_CorreoEst = reader["Bec_CorreoEst"].ToString(),
+                    Bec_ContraEst = reader["Bec_ContraEst"].ToString(),
+                    Bec_CarreraEst = reader["Bec_CarreraEst"].ToString(),
+                    Bec_TelefonoEst = reader["Bec_TelefonoEst"].ToString(),
+                    Bec_DireccionEst = reader["Bec_DireccionEst"].ToString()
                 });
             }
             return list;
@@ -43,7 +43,7 @@ namespace Api_Becas.Services
         public BecaModel GetById(int Bec_Id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Get_By_Id_Beca", conn);
+            using SqlCommand cmd = new SqlCommand("Get_By_ID_Beca", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Bec_Id", Bec_Id);
@@ -56,13 +56,13 @@ namespace Api_Becas.Services
                 return new BecaModel
                 {
                     Bec_Id = Convert.ToInt32(reader["Bec_Id"]),
-                    Bec_NombreConvocatoria = reader["Bec_NombreConvocatoria"].ToString(),
-                    Bec_NombreEstudiante = reader["Bec_NombreEstudiante"].ToString(),
-                    Bec_CorreoEstudiante = reader["Bec_CorreoEstudiante"].ToString(),
-                    Bec_ContraEstudiante = reader["Bec_ContraEstudiante"].ToString(),
-                    Bec_CarreraEstudiante = reader["Bec_CarreraEstudiante"].ToString(),
-                    Bec_TelefonoEstudiante = Convert.ToInt32(reader["Bec_TelefonoEstudiante"]),
-                    Bec_DirreccionEstudiante = reader["Bec_DirreccionEstudiante"].ToString()
+                    Bec_Nombreconv = reader["Bec_Nombreconv"].ToString(),
+                    Bec_NombreEst = reader["Bec_NombreEst"].ToString(),
+                    Bec_CorreoEst = reader["Bec_CorreoEst"].ToString(),
+                    Bec_ContraEst = reader["Bec_ContraEst"].ToString(),
+                    Bec_CarreraEst = reader["Bec_CarreraEst"].ToString(),
+                    Bec_TelefonoEst = reader["Bec_TelefonoEst"].ToString(),
+                    Bec_DireccionEst= reader["Bec_DireccionEst"].ToString()
                 };
             }
             return null;
@@ -76,13 +76,13 @@ namespace Api_Becas.Services
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Bec_Id", becaModel.Bec_Id);
-            cmd.Parameters.AddWithValue("@Bec_NombreConvocatoria", becaModel.Bec_NombreConvocatoria);
-            cmd.Parameters.AddWithValue("@Bec_NombreEstudiante", becaModel.Bec_NombreEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_CorreoEstudiante", becaModel.Bec_CorreoEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_ContraEstudiante", becaModel.Bec_ContraEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_CarreraEstudiante", becaModel.Bec_CarreraEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_TelefonoEstudiante", becaModel.Bec_TelefonoEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_DirreccionEstudiante", becaModel.Bec_DirreccionEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_Nombreconv", becaModel.Bec_Nombreconv);
+            cmd.Parameters.AddWithValue("@Bec_NombreEst", becaModel.Bec_NombreEst);
+            cmd.Parameters.AddWithValue("@Bec_CorreoEst", becaModel.Bec_CorreoEst);
+            cmd.Parameters.AddWithValue("@Bec_ContraEst", becaModel.Bec_ContraEst);
+            cmd.Parameters.AddWithValue("@Bec_CarreraEst", becaModel.Bec_CarreraEst);
+            cmd.Parameters.AddWithValue("@Bec_TelefonoEst", becaModel.Bec_TelefonoEst);
+            cmd.Parameters.AddWithValue("@Bec_DireccionEst", becaModel.Bec_DireccionEst);
 
             conn.Open();
             return Convert.ToInt32(cmd.ExecuteScalar());
@@ -96,13 +96,13 @@ namespace Api_Becas.Services
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@Bec_Id", becaModel.Bec_Id);
-            cmd.Parameters.AddWithValue("@Bec_NombreConvocatoria", becaModel.Bec_NombreConvocatoria);
-            cmd.Parameters.AddWithValue("@Bec_NombreEstudiante", becaModel.Bec_NombreEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_CorreoEstudiante", becaModel.Bec_CorreoEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_ContraEstudiante", becaModel.Bec_ContraEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_CarreraEstudiante", becaModel.Bec_CarreraEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_TelefonoEstudiante", becaModel.Bec_TelefonoEstudiante);
-            cmd.Parameters.AddWithValue("@Bec_DirreccionEstudiante", becaModel.Bec_DirreccionEstudiante);
+            cmd.Parameters.AddWithValue("@Bec_Nombreconv", becaModel.Bec_Nombreconv);
+            cmd.Parameters.AddWithValue("@Bec_NombreEst", becaModel.Bec_NombreEst);
+            cmd.Parameters.AddWithValue("@Bec_CorreoEst", becaModel.Bec_CorreoEst);
+            cmd.Parameters.AddWithValue("@Bec_ContraEst", becaModel.Bec_ContraEst);
+            cmd.Parameters.AddWithValue("@Bec_CarreraEst", becaModel.Bec_CarreraEst);
+            cmd.Parameters.AddWithValue("@Bec_TelefonoEst", becaModel.Bec_TelefonoEst);
+            cmd.Parameters.AddWithValue("@Bec_DireccionEst", becaModel.Bec_DireccionEst);
 
             conn.Open();
             cmd.ExecuteNonQuery();

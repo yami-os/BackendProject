@@ -38,7 +38,7 @@ namespace Api_Becas.Services
         public ConvocatoriaModel GetById(int Con_id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Get_By_Id_Convocatoria", conn);
+            using SqlCommand cmd = new SqlCommand("Get_By_ID_Convocatoria", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Con_id", Con_id);

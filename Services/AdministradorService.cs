@@ -40,7 +40,7 @@ namespace Api_Becas.Services
         public AdministradorModel GetById(int Adm_Id)
         {
             using SqlConnection conn = new SqlConnection(_connection);
-            using SqlCommand cmd = new SqlCommand("Get_By_Id_Administrador", conn);
+            using SqlCommand cmd = new SqlCommand("Get_By_ID_Administrador", conn);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Adm_Id", Adm_Id);
