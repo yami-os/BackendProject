@@ -1,8 +1,12 @@
-﻿namespace Api_Becas.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Api_Becas.Models
 {
     public class BecaModel
     {
+        [Key]
         public int Bec_Id { get; set; }
+
         public string? Bec_Nombreconv {  get; set; }
         public string? Bec_NombreEst {  get; set; }
         public string? Bec_CorreoEst { get; set; }

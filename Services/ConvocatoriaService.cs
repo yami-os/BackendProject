@@ -65,7 +65,6 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Con_Id", convocatoriaModel.Con_Id);
             cmd.Parameters.AddWithValue("@Con_Tipo", convocatoriaModel.Con_Tipo);
             cmd.Parameters.AddWithValue("@Con_Fecha", convocatoriaModel.Con_Fecha);
 

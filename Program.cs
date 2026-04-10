@@ -1,4 +1,6 @@
 using Api_Becas.Services;
+using Api_Becas.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,11 @@ builder.Services.AddScoped<IEstudianteService, EstudianteService>();
 builder.Services.AddScoped<ISolicitudService, SolicitudService>();
 builder.Services.AddScoped<IAdministradorService, AdministradorService>();
 builder.Services.AddScoped<IConvocatoriaService, ConvocatoriaService>();
+builder.Services.AddScoped<IAutenticacionService, AutenticacionService>();
+
+builder.Services.AddDbContext<BecasDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 builder.Services.AddCors(options =>
 {

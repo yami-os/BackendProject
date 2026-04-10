@@ -75,7 +75,6 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("Sol_Id", solicitudModel.Sol_Id);
             cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
             cmd.Parameters.AddWithValue("Sol_Estado", solicitudModel.Sol_Estado);
             cmd.Parameters.AddWithValue("Sol_Comentarios", solicitudModel.Sol_Comentarios);
