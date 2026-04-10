@@ -1,0 +1,29 @@
+<h2>Solicitud</h2>
+
+<input [(ngModel)]="sol.sol_Fecha" type="date">
+<input [(ngModel)]="sol.sol_Estado" placeholder="Estado">
+<input [(ngModel)]="sol.sol_Comentarios" placeholder="Comentarios">
+<input [(ngModel)]="sol.sol_CorreoEst" placeholder="Correo">
+<input [(ngModel)]="sol.sol_CrearContra" placeholder="Contraseña">
+<input [(ngModel)]="sol.sol_Telefono" placeholder="Teléfono">
+<input [(ngModel)]="sol.sol_Direccion" placeholder="Dirección">
+
+<br><br>
+
+<button (click)="insert()">Agregar</button>
+<button (click)="update()">Actualizar</button>
+<button (click)="reset()">Limpiar</button>
+
+<table border="1">
+  <tr *ngFor="let s of solicitudes">
+    <td>{{s.sol_Id}}</td>
+    <td>{{s.sol_Fecha}}</td>
+    <td>{{s.sol_Estado}}</td>
+    <td>{{s.sol_CorreoEst}}</td>
+
+    <td>
+      <button (click)="edit(s)">Editar</button>
+      <button (click)="delete(s.sol_Id)">Eliminar</button>
+    </td>
+  </tr>
+</table>

@@ -1,45 +1,27 @@
-<div class="container mt-5 mb-5">
-  <div class="row justify-content-center">
-    <div class="col-md-5">
-      <div class="card shadow-lg border-0" style="border-radius: 15px;">
-        <div class="card-header text-white text-center p-4" style="background-color: #63112b; border-radius: 15px 15px 0 0;">
-          <h3 class="fw-bold mb-0">Crear Cuenta</h3>
-          <p class="small mb-0">Regístrate para solicitar tu beca</p>
-        </div>
-        <div class="card-body p-4">
-          <form>
-            <div class="mb-3">
-              <label class="form-label fw-bold">Nombre Completo</label>
-              <input type="text" class="form-control bg-light" placeholder="Ej. Mariana Moya">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-bold">Matrícula</label>
-              <input type="text" class="form-control bg-light" placeholder="2200XXXX">
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-bold">Carrera</label>
-              <select class="form-select bg-light">
-                <option selected disabled>Selecciona tu carrera</option>
-                <option value="1">TSU en Software</option>
-                <option value="2">Ingeniería en Mecatrónica</option>
-                <option value="3">Licenciatura en Gestión</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-bold">Correo Institucional</label>
-              <input type="email" class="form-control bg-light" placeholder="usuario@utss.edu.mx">
-            </div>
-            <div class="mb-4">
-              <label class="form-label fw-bold">Contraseña</label>
-              <input type="password" class="form-control bg-light" placeholder="********">
-            </div>
-            <button type="submit" class="btn btn-lg w-100 text-white fw-bold" style="background-color: #63112b;">Registrarme</button>
-          </form>
-        </div>
-        <div class="card-footer bg-white text-center border-0 pb-4">
-          <p class="mb-0">¿Ya tienes cuenta? <a routerLink="/login" style="color: #63112b; font-weight: bold; text-decoration: none;">Inicia Sesión</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container mt-4">
+
+  <h2>Registro</h2>
+
+  <input class="form-control mb-2"
+   placeholder="Nombre"
+    [(ngModel)]="nuevoRegistro.nombre">
+
+  <input class="form-control mb-2" 
+  placeholder="Correo" 
+  [(ngModel)]="nuevoRegistro.correo">
+
+  <input class="form-control mb-2"
+   placeholder="Contraseña"
+    type="password" 
+    [(ngModel)]="nuevoRegistro.contra">
+
+  <select class="form-control mb-2" [(ngModel)]="nuevoRegistro.rol">
+    <option value="estudiante">Estudiante</option>
+    <option value="administrador">Administrador</option>
+  </select>
+
+  <button class="btn btn-primary w-100" (click)="registrar()">
+    Registrarse
+  </button>
+
 </div>

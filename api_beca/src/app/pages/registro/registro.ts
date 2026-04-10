@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
+import { AutenticacionService } from '../../services/autenticacion.service';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './registro.html',
-  styleUrl: './registro.css'
+  imports: [CommonModule, FormsModule],
+  templateUrl: './registro.html'
 })
 export class RegistroComponent {
-  nuevoEstudiante = {
+
+  nuevoRegistro = {
     nombre: '',
-    matricula: '',
-    carrera: '',
-    email: '',
-    password: ''
+    correo: '',
+    contra: '',
+    rol: 'estudiante'
   };
 
-  constructor(private router: Router) {}
+  constructor(private AutenticacionService: AutenticacionService, private router: Router) {}
 
   registrar() {
-    console.log('Datos enviados a la BD:', this.nuevoEstudiante);
-    
-    alert('Registro exitoso. Ahora puedes iniciar sesión.');
-    this.router.navigate(['/login']);
+    this.AutenticacionService.register(this.nuevoRegistro).subscribe({
+      next: (res) => {
+        alert('Registro exitoso');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        alert('Error al registrar o correo ya existe');
+        console.log(err);
+      }
+    });
   }
 }

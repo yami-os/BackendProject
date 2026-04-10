@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 import { Router, RouterModule } from '@angular/router';
+import { AutenticacionService } from '../../services/autenticacion.service';
 
 @Component({
   selector: 'app-login',
@@ -11,23 +12,46 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './login.css'
 })
 export class LoginComponent {
+
   usuario = {
     email: '',
     password: ''
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private autenticacionService: AutenticacionService) {}
 
   onLogin() {
-    console.log('Intentando entrar con:', this.usuario);
-    
 
-    if(this.usuario.email !== '' && this.usuario.password !== '') {
-      alert('¡Bienvenido al sistema!');
-      this.router.navigate(['/']); 
+    if(this.usuario.email && this.usuario.password) {
+
+      const data = {
+        correo: this.usuario.email,
+        contra: this.usuario.password
+      };
+
+      this.autenticacionService.login(data).subscribe({
+        next: (res : any) => {
+
+          alert('Bienvenido ' + res.nombre);
+
+          // guardar sesión
+          localStorage.setItem('usuario', JSON.stringify(res));
+
+          // redirección según rol
+          if(res.rol === 'administrador'){
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/estudiante']);
+          }
+
+        },
+        error: () => {
+          alert('Correo o contraseña incorrectos');
+        }
+      });
+
     } else {
-      alert('Por favor, llena todos los campos');
+      alert('Llena todos los campos');
     }
   }
 }
-

@@ -11,51 +11,66 @@ import { ConvocatoriaModel } from '../../models/convocatoria';
   templateUrl: './convocatoria.html',
 })
 export class ConvocatoriaComponent implements OnInit {
+
   convocatorias: ConvocatoriaModel[] = [];
-  editando = false;
-  conv: ConvocatoriaModel = { con_Id: 0, con_Tipo: '', con_Fecha: '' };
+
+  conv: ConvocatoriaModel = {
+    con_Id: 0,
+    con_Tipo: '',
+    con_Fecha: ''
+  };
 
   constructor(private service: ConvocatoriaService) {}
 
-  ngOnInit(): void { this.listar(); }
+  ngOnInit(): void {
+    this.getAll();
+  }
 
-  listar(): void {
-    this.service.getAll().subscribe((data: any) => {
+
+  getAll(): void {
+    this.service.getAll().subscribe(data => 
+    {
       this.convocatorias = data;
     });
   }
 
-  guardar(): void {
-    if (this.editando) {
-      this.service.update(this.conv).subscribe(() => {
-        this.listar();
-        this.limpiar();
-      });
-    } else {
-      this.service.insert(this.conv).subscribe(() => {
-        this.listar();
-        this.limpiar();
-      });
-    }
+  insert(): void {
+    this.service.insert(this.conv).subscribe(() =>
+    {
+      this.getAll();
+      this.reset();
+    });
   }
 
-  editar(item: ConvocatoriaModel): void {
-    this.editando = true;
-    this.conv = { ...item };
-   
+  edit(convocatoria: ConvocatoriaModel): void
+   {
+    this.conv = { ...convocatoria };
     if (this.conv.con_Fecha) {
       this.conv.con_Fecha = this.conv.con_Fecha.split('T')[0];
     }
   }
 
-  eliminar(id: number): void {
-    if (confirm('¿Borrar convocatoria?')) {
-      this.service.delete(id).subscribe(() => this.listar());
-    }
+
+  update(): void {
+    this.service.update(this.conv).subscribe(() => 
+    {
+      this.getAll();
+      this.reset();
+    });
   }
 
-  limpiar(): void {
-    this.editando = false;
-    this.conv = { con_Id: 0, con_Tipo: '', con_Fecha: '' };
+  
+  delete(id: number): void {
+    this.service.delete(id).subscribe(() => {
+      this.getAll();
+    });
+  }
+
+  reset(): void {
+    this.conv = {
+      con_Id: 0,
+      con_Tipo: '',
+      con_Fecha: ''
+    };
   }
 }

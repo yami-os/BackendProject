@@ -27,4 +27,8 @@ export class EstudianteService {
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  registrarEstudiante(data: any) {
+  return this.http.post('https://localhost:7282/api/Estudiante', data);
+}
 }

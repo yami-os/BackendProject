@@ -1,54 +1,80 @@
 <div class="container mt-4">
-  <h2 class="text-primary mb-4">Panel de Administradores</h2>
 
-  <div class="card shadow-sm p-4 mb-4">
-    <div class="row g-3">
-      <div class="col-md-2">
-        <label class="form-label">ID</label>
-        <input type="number" class="form-control" [(ngModel)]="admin.adm_Id" [disabled]="editando">
+  <h2 class="text-center mb-4">Administradores</h2>
+
+  <div class="card p-3 mb-4 shadow-sm">
+    <h5>{{ editando ? 'Editar Administrador' : 'Nuevo Administrador' }}</h5>
+
+    <form (ngSubmit)="editando ? update() : insert()">
+
+      <div class="mb-2">
+        <label>Nombre</label>
+        <input type="text" class="form-control"
+          [(ngModel)]="admin.adm_Nombre"
+          name="nombre" required>
       </div>
-      <div class="col-md-4">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" [(ngModel)]="admin.adm_Nombre" placeholder="Ej. Alejandro Lopez">
+
+      <div class="mb-2">
+        <label>Correo</label>
+        <input type="email" class="form-control"
+          [(ngModel)]="admin.adm_Correo"
+          name="correo" required>
       </div>
-      <div class="col-md-3">
-        <label class="form-label">Correo</label>
-        <input type="email" class="form-control" [(ngModel)]="admin.adm_Correo" placeholder="correo@ejemplo.com">
+
+      <div class="mb-2">
+        <label>Contraseña</label>
+        <input type="password" class="form-control"
+          [(ngModel)]="admin.adm_Contra"
+          name="contra" required>
       </div>
-      <div class="col-md-3">
-        <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" [(ngModel)]="admin.adm_Contra">
-      </div>
-      <div class="col-12 text-end">
-        <button class="btn btn-secondary me-2" (click)="limpiar()">Cancelar</button>
-        <button class="btn btn-success" (click)="guardar()">
-          {{ editando ? 'Actualizar Datos' : 'Registrar Administrador' }}
+
+      <div class="mt-3">
+        <button class="btn btn-success me-2" type="submit">
+          {{ editando ? 'Actualizar' : 'Guardar' }}
+        </button>
+
+        <button class="btn btn-secondary" type="button" (click)="reset()">
+          Cancelar
         </button>
       </div>
-    </div>
+
+    </form>
   </div>
 
-  <div class="table-responsive shadow-sm">
-    <table class="table table-hover table-bordered align-middle">
+  <div class="card p-3 shadow-sm">
+    <h5>Lista de Administradores</h5>
+
+    <table class="table table-bordered table-striped mt-3">
       <thead class="table-dark">
         <tr>
           <th>ID</th>
-          <th>Nombre Completo</th>
-          <th>Correo Electrónico</th>
-          <th class="text-center">Acciones</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Acciones</th>
         </tr>
       </thead>
+
       <tbody>
         <tr *ngFor="let a of admins">
           <td>{{ a.adm_Id }}</td>
           <td>{{ a.adm_Nombre }}</td>
           <td>{{ a.adm_Correo }}</td>
-          <td class="text-center">
-            <button class="btn btn-warning btn-sm me-2" (click)="editar(a)">Editar</button>
-            <button class="btn btn-danger btn-sm" (click)="eliminar(a.adm_Id)">Eliminar</button>
+
+          <td>
+            <button class="btn btn-warning btn-sm me-2"
+              (click)="edit(a)">
+              Editar
+            </button>
+
+            <button class="btn btn-danger btn-sm"
+              (click)="delete(a.adm_Id)">
+              Eliminar
+            </button>
           </td>
         </tr>
       </tbody>
+
     </table>
   </div>
+
 </div>

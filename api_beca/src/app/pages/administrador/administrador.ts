@@ -14,7 +14,7 @@ import { AdministradorModel } from '../../models/administrador';
 export class AdministradorComponent implements OnInit {
 
   admins: AdministradorModel[] = [];
-  
+
   admin: AdministradorModel = {
     adm_Id: 0,
     adm_Nombre: '',
@@ -27,44 +27,48 @@ export class AdministradorComponent implements OnInit {
   constructor(private service: AdministradorService) {}
 
   ngOnInit(): void {
-    this.cargar();
+    this.getAll();
   }
 
-  cargar(): void {
-    this.service.getAll().subscribe((data: any) => {
-      this.admins = data;
+  // 🔥 OBTENER TODOS
+  getAll(): void {
+    this.service.getAll().subscribe(data => {
+      this.admins = data; 
     });
   }
 
-  guardar(): void {
-    if (this.editando) {
-      this.service.update(this.admin).subscribe(() => {
-        this.cargar();
-        this.limpiar();
-      });
-    } else {
-      this.service.insert(this.admin).subscribe(() => {
-        this.cargar();
-        this.limpiar();
-      });
-    }
+  insert(): void {
+    this.service.insert(this.admin).subscribe(() => {
+      this.getAll();
+      this.reset();
+    });
   }
 
-  editar(seleccionado: AdministradorModel): void {
+  edit(a: AdministradorModel): void {
+    this.admin = { ...a };
     this.editando = true;
-    this.admin = { ...seleccionado };
   }
 
-  eliminar(id: number): void {
-    if (confirm('¿Estás seguro de eliminar este registro?')) {
-      this.service.delete(id).subscribe(() => {
-        this.cargar();
-      });
-    }
+  update(): void {
+    this.service.update(this.admin).subscribe(() => {
+      this.getAll();
+      this.reset();
+    });
   }
 
-  limpiar(): void {
+  delete(id: number): void {
+    this.service.delete(id).subscribe(() => {
+      this.getAll();
+    });
+  }
+
+  reset(): void {
+    this.admin = {
+      adm_Id: 0,
+      adm_Nombre: '',
+      adm_Correo: '',
+      adm_Contra: ''
+    };
     this.editando = false;
-    this.admin = { adm_Id: 0, adm_Nombre: '', adm_Correo: '', adm_Contra: '' };
   }
 }
