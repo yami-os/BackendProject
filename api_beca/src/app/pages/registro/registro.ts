@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { AutenticacionService } from '../../services/autenticacion.service';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AutenticacionService } from '../../services/autenticacion.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,25 +11,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegistroComponent {
 
-  nuevoRegistro = {
+  registro = {
     nombre: '',
     correo: '',
-    contra: '',
-    rol: 'estudiante'
+    contra: ''
   };
 
-  constructor(private AutenticacionService: AutenticacionService, private router: Router) {}
+  constructor(private auth: AutenticacionService) {}
 
   registrar() {
-    this.AutenticacionService.register(this.nuevoRegistro).subscribe({
-      next: (res) => {
-        alert('Registro exitoso');
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        alert('Error al registrar o correo ya existe');
-        console.log(err);
-      }
+    this.auth.register(this.registro).subscribe(() => {
+      alert('Registro exitoso');
+      window.location.href = '/login';
     });
   }
 }

@@ -28,7 +28,7 @@ export class ConvocatoriaComponent implements OnInit {
 
 
   getAll(): void {
-    this.service.getAll().subscribe(data => 
+   this.service.getAll().subscribe((data: any) =>
     {
       this.convocatorias = data;
     });
@@ -52,7 +52,7 @@ export class ConvocatoriaComponent implements OnInit {
 
 
   update(): void {
-    this.service.update(this.conv).subscribe(() => 
+    this.service.update(this.conv.con_Id, this.conv).subscribe(() => 
     {
       this.getAll();
       this.reset();

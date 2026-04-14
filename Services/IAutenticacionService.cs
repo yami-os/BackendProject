@@ -6,6 +6,6 @@ namespace Api_Becas.Services
     {
         object Login (string correo, string contra);
 
-        bool Register(string correo, string contra, string nombre, string Rol);
+        bool Register(string correo, string contra, string nombre);
     }
 }

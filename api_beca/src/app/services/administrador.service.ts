@@ -7,6 +7,7 @@ import { AdministradorModel } from '../models/administrador';
   providedIn: 'root'
 })
 export class AdministradorService {
+  
   private url = 'https://localhost:7282/api/Administrador'; 
 
   constructor(private http: HttpClient) { }

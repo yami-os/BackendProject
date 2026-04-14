@@ -7,23 +7,25 @@ import { ConvocatoriaModel } from '../models/convocatoria';
   providedIn: 'root'
 })
 export class ConvocatoriaService {
-  private url = 'https://localhost:7282/api/Convocatoria'; 
 
-  constructor(private http: HttpClient) { }
+  private url = 'https://localhost:7282/api/Convocatoria';
 
-  getAll(): Observable<ConvocatoriaModel[]> {
-    return this.http.get<ConvocatoriaModel[]>(this.url);
+  constructor(private http: HttpClient) {}
+
+ getAll(): Observable<ConvocatoriaModel[]> {
+  return this.http.get<ConvocatoriaModel[]>(this.url);
+}
+
+  insert(data: any) {
+    return this.http.post(this.url, data);
   }
 
-  insert(conv: ConvocatoriaModel): Observable<any> {
-    return this.http.post(this.url, conv);
-  }
+ 
+update(id: number, data: ConvocatoriaModel) {
+  return this.http.put(`${this.url}/${id}`, data);
+}
 
-  update(conv: ConvocatoriaModel): Observable<any> {
-    return this.http.put(`${this.url}/${conv.con_Id}`, conv);
-  }
-
-  delete(id: number): Observable<any> {
+  delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
 }

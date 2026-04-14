@@ -1,84 +1,31 @@
-<div class="container mt-5">
-  <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
-    <div class="col-md-4">
+<div class="container" style="max-width: 400px; margin-top: 100px;">
 
-      <div class="text-center mb-4">
-        <h2 class="fw-bold" style="color: #63112b;">UTSBECAS</h2>
-        <p class="text-muted">Ingresa tus credenciales para continuar</p>
-      </div>
+  <h2 class="text-center mb-4">Iniciar Sesión</h2>
 
-      <div class="card shadow border-0 p-3" style="border-radius: 12px;">
-        <div class="card-body">
+  <form (ngSubmit)="login()">
 
-          <form (ngSubmit)="onLogin()">
+    <input 
+      type="email"
+      [(ngModel)]="loginData.correo"
+      name="correo"
+      placeholder="Correo"
+      class="form-control mb-3"
+      required
+    >
 
-            <!-- CORREO -->
-            <div class="mb-3">
-              <label class="form-label fw-bold">Correo o Matrícula</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white border-end-0">
-                  <i class="bi bi-person text-muted"></i>
-                </span>
-                <input 
-                  type="text"
-                  class="form-control border-start-0 ps-0"
-                  placeholder="Ej. 22001234"
-                  [(ngModel)]="usuario.email"
-                  name="email"
-                  required>
-              </div>
-            </div>
+    <input 
+      type="password"
+      [(ngModel)]="loginData.contra"
+      name="contra"
+      placeholder="Contraseña"
+      class="form-control mb-3"
+      required
+    >
 
-            <div class="mb-4">
-              <label class="form-label fw-bold">Contraseña</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white border-end-0">
-                  <i class="bi bi-lock text-muted"></i>
-                </span>
-                <input 
-                  type="password"
-                  class="form-control border-start-0 ps-0"
-                  placeholder="********"
-                  [(ngModel)]="usuario.password"
-                  name="password"
-                  required>
-              </div>
-            </div>
+    <button type="submit" class="btn btn-primary w-100">
+      Iniciar Sesión
+    </button>
 
-            <div class="d-flex justify-content-between mb-4">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="remember">
-                <label class="form-check-label small" for="remember">
-                  Recordarme
-                </label>
-              </div>
+  </form>
 
-              <a href="#" class="small text-decoration-none" style="color: #63112b;">
-                ¿Olvidaste tu contraseña?
-              </a>
-            </div>
-            <button 
-              type="submit"
-              class="btn btn-lg w-100 text-white fw-bold shadow-sm"
-              style="background-color: #63112b;">
-              Entrar
-            </button>
-
-          </form>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <p>
-          ¿No eres usuario?
-          <a routerLink="/registro"
-             class="fw-bold text-decoration-none"
-             style="color: #63112b;">
-            Crea una cuenta aquí
-          </a>
-        </p>
-      </div>
-
-    </div>
-  </div>
 </div>

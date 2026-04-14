@@ -11,17 +11,17 @@ export class SolicitudService {
 
   constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http.get<SolicitudModel[]>(this.url);
-  }
+getAll() {
+  return this.http.get<SolicitudModel[]>(this.url);
+}
 
-  insert(data: SolicitudModel) {
+  insert(data: any) {
     return this.http.post(this.url, data);
   }
 
-  update(data: SolicitudModel) {
-    return this.http.put(this.url, data);
-  }
+  update(id: number, data: SolicitudModel) {
+  return this.http.put(`${this.url}/${id}`, data);
+}
 
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);

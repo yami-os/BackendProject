@@ -1,27 +1,19 @@
-<div class="container mt-4">
+<div class="registro-container">
 
-  <h2>Registro</h2>
+  <div class="registro-card">
 
-  <input class="form-control mb-2"
-   placeholder="Nombre"
-    [(ngModel)]="nuevoRegistro.nombre">
+    <h2>Crear Cuenta</h2>
 
-  <input class="form-control mb-2" 
-  placeholder="Correo" 
-  [(ngModel)]="nuevoRegistro.correo">
+    <input [(ngModel)]="registro.nombre" placeholder="Nombre" class="form-control">
 
-  <input class="form-control mb-2"
-   placeholder="Contraseña"
-    type="password" 
-    [(ngModel)]="nuevoRegistro.contra">
+    <input [(ngModel)]="registro.correo" placeholder="Correo" class="form-control">
 
-  <select class="form-control mb-2" [(ngModel)]="nuevoRegistro.rol">
-    <option value="estudiante">Estudiante</option>
-    <option value="administrador">Administrador</option>
-  </select>
+    <input type="password" [(ngModel)]="registro.contra" placeholder="Contraseña" class="form-control">
 
-  <button class="btn btn-primary w-100" (click)="registrar()">
-    Registrarse
-  </button>
+    <button (click)="registrar()" class="btn btn-registro">
+      Registrarse
+    </button>
+
+  </div>
 
 </div>

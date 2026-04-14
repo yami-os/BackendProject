@@ -1,57 +1,43 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
-import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AutenticacionService } from '../../services/autenticacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css'] 
 })
 export class LoginComponent {
 
-  usuario = {
-    email: '',
-    password: ''
+  loginData = {
+    correo: '',
+    contra: ''
   };
 
-  constructor(private router: Router, private autenticacionService: AutenticacionService) {}
+  constructor(
+    private auth: AutenticacionService,
+    private router: Router
+  ) {}
 
-  onLogin() {
+  login() {
+    this.auth.login(this.loginData).subscribe((res: any) => {
 
-    if(this.usuario.email && this.usuario.password) {
+   
+      localStorage.setItem('usuario', JSON.stringify(res));
 
-      const data = {
-        correo: this.usuario.email,
-        contra: this.usuario.password
-      };
 
-      this.autenticacionService.login(data).subscribe({
-        next: (res : any) => {
+      if (res.rol === 'administrador') {
+        this.router.navigate(['/admin']);
+      } else {
+        this.router.navigate(['/portada']);
+      }
 
-          alert('Bienvenido ' + res.nombre);
-
-          // guardar sesión
-          localStorage.setItem('usuario', JSON.stringify(res));
-
-          // redirección según rol
-          if(res.rol === 'administrador'){
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate(['/estudiante']);
-          }
-
-        },
-        error: () => {
-          alert('Correo o contraseña incorrectos');
-        }
-      });
-
-    } else {
-      alert('Llena todos los campos');
-    }
+    }, error => {
+      alert('Correo o contraseña incorrectos');
+    });
   }
 }

@@ -1,74 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AdministradorService } from '../../services/administrador.service';
-import { AdministradorModel } from '../../models/administrador';
+import { ConvocatoriaService } from '../../services/convocatoria.service';
 
 @Component({
   selector: 'app-administrador',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './administrador.html',
-  styleUrl: './administrador.css'
+  templateUrl: './administrador.html'
 })
 export class AdministradorComponent implements OnInit {
 
-  admins: AdministradorModel[] = [];
+  convocatorias: any[] = [];
 
-  admin: AdministradorModel = {
-    adm_Id: 0,
-    adm_Nombre: '',
-    adm_Correo: '',
-    adm_Contra: ''
+  nuevaConvocatoria = {
+    con_Id: 0,
+    con_Tipo: '',
+    con_Fecha: ''
   };
 
-  editando = false;
+  constructor(private service: ConvocatoriaService) {}
 
-  constructor(private service: AdministradorService) {}
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.getAll();
   }
 
-  // 🔥 OBTENER TODOS
-  getAll(): void {
-    this.service.getAll().subscribe(data => {
-      this.admins = data; 
+  getAll() {
+    this.service.getAll().subscribe((data: any) => {
+      this.convocatorias = data;
     });
   }
 
-  insert(): void {
-    this.service.insert(this.admin).subscribe(() => {
+  agregar() {
+    this.service.insert(this.nuevaConvocatoria).subscribe(() => {
       this.getAll();
-      this.reset();
+      this.nuevaConvocatoria = { con_Id: 0, con_Tipo: '', con_Fecha: '' };
     });
   }
 
-  edit(a: AdministradorModel): void {
-    this.admin = { ...a };
-    this.editando = true;
-  }
-
-  update(): void {
-    this.service.update(this.admin).subscribe(() => {
-      this.getAll();
-      this.reset();
-    });
-  }
-
-  delete(id: number): void {
+  eliminar(id: number) {
     this.service.delete(id).subscribe(() => {
       this.getAll();
     });
-  }
-
-  reset(): void {
-    this.admin = {
-      adm_Id: 0,
-      adm_Nombre: '',
-      adm_Correo: '',
-      adm_Contra: ''
-    };
-    this.editando = false;
   }
 }

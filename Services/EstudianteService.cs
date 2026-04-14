@@ -74,7 +74,6 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("Est_Id", estudianteModel.Est_Id);
             cmd.Parameters.AddWithValue("Est_Nombre", estudianteModel.Est_Nombre);
             cmd.Parameters.AddWithValue("Est_Correo", estudianteModel.Est_Correo);
             cmd.Parameters.AddWithValue("Est_Carrera", estudianteModel.Est_Carrera);

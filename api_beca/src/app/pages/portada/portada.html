@@ -1,47 +1,62 @@
-<div class="contenedor-principal">
-  <h2 class="mb-4 fw-bold text-secondary">Convocatorias Activas</h2>
-  
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm border-0 h-100" style="border-radius: 15px; overflow: hidden;">
-        <div class="p-3 text-white fw-bold" style="background-color: #63112b;">
-          Beca de Manutención
-        </div>
-        <div class="card-body">
-          <p class="card-text"><strong>Requisitos:</strong> Ser alumno regular, promedio mínimo de 8.0, comprobante de ingresos.</p>
-          <p class="text-danger fw-bold small">Cierra: 15 OCT 2024</p>
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-light border w-50">Ver Detalles</button>
-            <button class="btn text-white w-50" style="background-color: #63112b;">Aplicar Ahora</button>
-          </div>
-        </div>
+<div class="home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Encuentra y solicita becas fácilmente 🎓</h1>
+      <p>Accede a oportunidades que pueden cambiar tu futuro</p>
+      <button class="btn-main" routerLink="/solicitudes">
+        Ver convocatorias
+      </button>
+    </div>
+  </section>
+  <section class="becas">
+    <h2>Convocatorias Disponibles</h2>
+    <div class="cards">
+      <div class="card" *ngFor="let beca of becas">
+        <h3>{{ beca.nombre }}</h3>
+        <p>{{ beca.descripcion }}</p>
+        <span class="fecha">
+          Fecha límite: {{ beca.fechaLimite | date }}
+        </span>
+        <button class="btn-card">
+          Solicitar
+        </button>
       </div>
     </div>
-
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-sm border-0 h-100" style="border-radius: 15px; overflow: hidden;">
-        <div class="p-3 text-white fw-bold" style="background-color: #63112b;">
-          Beca de Movilidad Nacional
-        </div>
-        <div class="card-body">
-          <p class="card-text"><strong>Requisitos:</strong> Haber cursado el 50% de créditos, carta de aceptación, pasaporte vigente.</p>
-          <p class="text-danger fw-bold small">Cierra: 30 OCT 2024</p>
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-light border w-50">Ver Detalles</button>
-            <button class="btn text-white w-50" style="background-color: #63112b;">Aplicar Ahora</button>
-          </div>
-        </div>
+  </section>
+  <section *ngIf="usuario?.rol === 'estudiante'" class="mis-solicitudes">
+    <h2>Mis Solicitudes</h2>
+    <div class="cards">
+      <div class="card" *ngFor="let s of solicitudes">
+        <h3>{{ s.becaNombre }}</h3>
+        <p class="estado" [ngClass]="s.estado">
+          {{ s.estado }}
+        </p>
       </div>
     </div>
-  </div>
-
-  <div class="mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3 class="fw-bold text-secondary">Resultados Recientes</h3>
-      <button class="btn btn-link text-decoration-none p-0" style="color: #63112b;">Ver Todos los Resultados</button>
+  </section>
+  <section *ngIf="usuario?.rol === 'administrador'" class="admin-panel">
+    <h2>Panel de Administrador</h2>
+    <div class="admin-actions">
+      <button class="btn-main" routerLink="/admin">
+        Gestionar Becas
+      </button>
+      <button class="btn-secondary">
+        Ver Solicitudes
+      </button>
     </div>
-    <div class="p-4 bg-white border rounded-3 shadow-sm">
-      <p class="mb-0 text-muted">Beca Académica F23 - Folios beneficiados publicados hoy.</p>
+  </section>
+  <section class="stats">
+    <div class="stat">
+      <h3>+100</h3>
+      <p>Becas disponibles</p>
     </div>
-  </div>
+    <div class="stat">
+      <h3>+500</h3>
+      <p>Estudiantes beneficiados</p>
+    </div>
+    <div class="stat">
+      <h3>+20</h3>
+      <p>Instituciones</p>
+    </div>
+  </section>
 </div>

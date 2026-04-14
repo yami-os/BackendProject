@@ -68,7 +68,6 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Adm_Id", administradorModel.Adm_Id);
             cmd.Parameters.AddWithValue("@Adm_Nombre", administradorModel.Adm_Nombre);
             cmd.Parameters.AddWithValue("@Adm_Correo", administradorModel.Adm_Correo);
             cmd.Parameters.AddWithValue("@Adm_Contra", administradorModel.Adm_Contra);

@@ -1,0 +1,104 @@
+.navbar {
+  background-color: #ffffff !important;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.shadow-sm {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  color: #7a0f2c !important; 
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.navbar-brand:hover {
+  color: #5c0b21 !important;
+  transform: scale(1.05);
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #7a0f2c;
+  left: 0;
+  bottom: 0;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #7a0f2c !important;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 6px 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark {
+  border-color: #7a0f2c;
+  color: #7a0f2c;
+}
+
+.btn-outline-dark:hover {
+  background-color: #7a0f2c;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #7a0f2c;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #5c0b21;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #b02a37;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #8a1f29;
+  transform: scale(1.05);
+}
+
+span {
+  color: #444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .nav-link {
+    margin: 5px 0;
+  }
+
+  .btn {
+    margin-top: 5px;
+  }
+}

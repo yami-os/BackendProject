@@ -48,49 +48,33 @@ namespace Api_Becas.Services
 
            
         }
-        public bool Register(string correo, string contra, string nombre, string rol)
+        public bool Register(string correo, string contra, string nombre)
         {
-            var estudianteExistente = _context.Estudiantes
+            var existe = _context.Estudiantes
                 .FirstOrDefault(e => e.Est_Correo == correo);
 
-            var existeAdministrador = _context.Administrador
+            var existeAdmin = _context.Administrador
                 .FirstOrDefault(a => a.Adm_Correo == correo);
 
-            if (estudianteExistente != null || existeAdministrador != null)
+            if (existe != null || existeAdmin != null)
             {
                 return false;
             }
 
-            if (rol == "estudiante")
+            var estudiante = new EstudianteModel
             {
-                var estudiante = new EstudianteModel
-                {
-                    Est_Nombre = nombre,
-                    Est_Correo = correo,
-                    Est_Contra = contra
-                };
+                Est_Nombre = nombre,
+                Est_Correo = correo,
+                Est_Contra = contra,
+                Est_Carrera = "",
+                Est_Telefono = "",
+                Est_Direccion = ""
+            };
 
-                _context.Estudiantes.Add(estudiante);
-            }
-            else if (rol == "administrador")
-            {
-                var administrador = new AdministradorModel
-                {
-                    Adm_Nombre = nombre,
-                    Adm_Correo = correo,
-                    Adm_Contra = contra
-                };
-                _context.Administrador.Add(administrador);
-            }
-            else
-            {
-                return false;
-            }
-
+             _context.Estudiantes.Add(estudiante);
             _context.SaveChanges();
-            return true;
 
-
+            return true;    
         }
     }
 }

@@ -1,45 +1,56 @@
-
-.container {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.registro-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #63112b, #8c1d40);
 }
 
-
-.card {
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+.registro-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
+.registro-card h2 {
+  color: #63112b;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 
-.form-control, .form-select {
-    border-radius: 8px;
-    padding: 12px;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
+.form-control {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  transition: 0.3s;
 }
 
 .form-control:focus {
-    border-color: #63112b;
-    box-shadow: 0 0 0 0.2rem rgba(99, 17, 43, 0.25);
+  border-color: #63112b;
+  box-shadow: 0 0 5px rgba(99, 17, 43, 0.3);
 }
 
-
-.btn-primary-guinda {
-    background-color: #63112b;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s;
+.btn-registro {
+  width: 100%;
+  background-color: #63112b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.btn-primary-guinda:hover {
-    background-color: #4a0d20;
-    transform: translateY(-2px);
+.btn-registro:hover {
+  background-color: #4b0d20;
 }
 
-
-.input-group-text {
-    border-radius: 8px 0 0 8px;
-    background-color: #f8f9fa;
+.registro-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
 }

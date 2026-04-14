@@ -32,7 +32,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   getAll(): void {
-    this.service.getAll().subscribe(data => {
+    this.service.getAll().subscribe((data: any) => {
       this.solicitudes = data;
     });
   }
@@ -53,7 +53,7 @@ export class SolicitudComponent implements OnInit {
   }
 
   update(): void {
-    this.service.update(this.sol).subscribe(() => {
+    this.service.update(this.sol.sol_Id, this.sol).subscribe(() => {
       this.getAll();
       this.reset();
     });

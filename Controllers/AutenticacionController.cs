@@ -37,12 +37,12 @@ namespace Api_Becas.Controllers
             var resultado = _autenticacionService.Register(
                 registro.Correo,
                 registro.Contra,
-                registro.Nombre, 
-                registro.Rol);
+                registro.Nombre
+ );
 
-            if (resultado == null)
+            if (!resultado)
             {
-                return BadRequest("Error al registrar el usuario");
+                return BadRequest("Error al registrar el usuario o el correo ya existe");
             }
             return Ok("Registro exitoso");
 

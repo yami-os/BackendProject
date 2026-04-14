@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { EstudianteModel } from '../models/estudiante';
 
 @Injectable({
@@ -8,27 +7,23 @@ import { EstudianteModel } from '../models/estudiante';
 })
 export class EstudianteService {
 
-  private url = 'https://localhost:7282/api/Estudiante'; 
+  private url = 'https://localhost:7282/api/Estudiante';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getAll(): Observable<EstudianteModel[]> {
-    return this.http.get<EstudianteModel[]>(this.url);
+  getAll() {
+    return this.http.get(this.url);
   }
 
-  insert(est: EstudianteModel): Observable<any> {
-    return this.http.post(this.url, est);
+  insert(data: any) {
+    return this.http.post(this.url, data);
   }
 
-  update(est: EstudianteModel): Observable<any> {
-    return this.http.put(`${this.url}/${est.est_Id}`, est);
+  update(id: number, data: any) {
+    return this.http.put(`${this.url}/${id}`, data);
   }
 
-  delete(id: number): Observable<any> {
+  delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
-
-  registrarEstudiante(data: any) {
-  return this.http.post('https://localhost:7282/api/Estudiante', data);
-}
 }

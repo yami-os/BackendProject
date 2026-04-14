@@ -75,7 +75,6 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Bec_Id", becaModel.Bec_Id);
             cmd.Parameters.AddWithValue("@Bec_Nombreconv", becaModel.Bec_Nombreconv);
             cmd.Parameters.AddWithValue("@Bec_NombreEst", becaModel.Bec_NombreEst);
             cmd.Parameters.AddWithValue("@Bec_CorreoEst", becaModel.Bec_CorreoEst);
