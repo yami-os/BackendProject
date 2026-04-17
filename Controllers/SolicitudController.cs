@@ -6,7 +6,7 @@ namespace Api_Becas.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SolicitudController : Controller
+    public class SolicitudController : ControllerBase
     {
         private readonly ISolicitudService _service;
 
@@ -25,14 +25,26 @@ namespace Api_Becas.Controllers
         public IActionResult Get_By_Id_Solicitud(int id)
         {
             var data = _service.GetById(id);
-            if (data == null) return NotFound();
+
+            if (data == null)
+                return NotFound();
+
             return Ok(data);
         }
 
         [HttpPost]
         public IActionResult Insert_Solicitud([FromBody] SolicitudModel solicitud)
         {
+            //solicitud.Sol_Fecha = DateTime.Now;
+
+            if (string.IsNullOrEmpty(solicitud.Sol_Estado))
+                solicitud.Sol_Estado = "Pendiente";
+
+            if (string.IsNullOrEmpty(solicitud.Sol_Comentarios))
+                solicitud.Sol_Comentarios = "";
+
             var id = _service.Insert(solicitud);
+
             return Ok(new { id });
         }
 

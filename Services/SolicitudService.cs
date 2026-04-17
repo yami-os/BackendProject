@@ -29,7 +29,7 @@ namespace Api_Becas.Services
                 list.Add(new SolicitudModel
                 {
                     Sol_Id = Convert.ToInt32(reader["Sol_Id"]),
-                    Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
+                    //Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
                     Sol_Estado = reader["Sol_Estado"].ToString(),
                     Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
                     Sol_CorreoEst = reader["Sol_CorreoEst"].ToString(),
@@ -56,7 +56,7 @@ namespace Api_Becas.Services
                 return new SolicitudModel
                 {
                     Sol_Id = Convert.ToInt32(reader["Sol_Id"]),
-                    Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
+                    //Sol_Fecha = Convert.ToDateTime(reader["Sol_Fecha"]),
                     Sol_Estado = reader["Sol_Estado"].ToString(),
                     Sol_Comentarios = reader["Sol_Comentarios"].ToString(),
                     Sol_CorreoEst = reader["Sol_CorreoEst"].ToString(),
@@ -75,7 +75,7 @@ namespace Api_Becas.Services
 
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
+            //cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
             cmd.Parameters.AddWithValue("Sol_Estado", solicitudModel.Sol_Estado);
             cmd.Parameters.AddWithValue("Sol_Comentarios", solicitudModel.Sol_Comentarios);
             cmd.Parameters.AddWithValue("Sol_CorreoEst", solicitudModel.Sol_CorreoEst);
@@ -95,7 +95,7 @@ namespace Api_Becas.Services
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("Sol_Id", solicitudModel.Sol_Id);
-            cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
+            //cmd.Parameters.AddWithValue("Sol_Fecha", solicitudModel.Sol_Fecha);
             cmd.Parameters.AddWithValue("Sol_Estado", solicitudModel.Sol_Estado);
             cmd.Parameters.AddWithValue("Sol_Comentarios", solicitudModel.Sol_Comentarios);
             cmd.Parameters.AddWithValue("Sol_CorreoEst", solicitudModel.Sol_CorreoEst);
